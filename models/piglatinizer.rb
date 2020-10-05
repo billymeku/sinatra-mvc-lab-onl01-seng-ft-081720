@@ -1,8 +1,6 @@
 class PigLatinizer
   
-#   def initialize(word)
-#   @word = word 
-#   end
+
 def piglatinize(string)
     string.split.map { |s| piglatinize_word(s)}.join(' ')
   end
