@@ -1,6 +1,9 @@
 class PigLatinizer
   
 
+end
+
+
 def piglatinize(string)
     string.split.map { |s| piglatinize_word(s)}.join(' ')
   end
@@ -27,5 +30,3 @@ def piglatinize(string)
   def vowel?(letter)
     ['a','e','i','o','u'].include?(letter.downcase)
   end
-
-end
