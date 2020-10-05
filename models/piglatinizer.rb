@@ -39,7 +39,6 @@ def piglatinize(input)
   end
 end
 
-end
 
 
 def piglatinize(string)
