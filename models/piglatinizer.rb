@@ -8,8 +8,8 @@ def piglatinize(input)
         #sentence method
         output = piglatinize_sentence(input)
       end
-      puts output
-      output
+      # puts output
+      # output
   end
 
   ### HELPER METHODS ###
