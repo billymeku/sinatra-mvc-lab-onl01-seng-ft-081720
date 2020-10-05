@@ -1,42 +1,31 @@
 class PigLatinizer
   
-def piglatinize(input)
-      if input.split(" ").length == 1
-        #word method
-        output = piglatinize_word(input)
-      else
-        #sentence method
-        output = piglatinize_sentence(input)
-      end
-      # puts output
-      # output
+attr_reader :text
+
+  def initialize(text)
+    @text = text.downcase
   end
 
-  ### HELPER METHODS ###
-  def consonant?(char)
-    !char.match(/[aAeEiIoOuU]/)
-  end
+  def pig_word(word)
+    # returns the character index of the first vowel
+    w_index = word.index(/[aeiou]/)
 
-  def piglatinize_word(word)
-    # word starts with vowel
-    if !consonant?(word[0])
-      word = word + "w"
-    # word starts with 3 consonants
-    elsif consonant?(word[0]) && consonant?(word[1]) && consonant?(word[2])
-      word = word.slice(3..-1) + word.slice(0,3)
-    # word starts with 2 consonants
-    elsif consonant?(word[0]) && consonant?(word[1])
-      word = word.slice(2..-1) + word.slice(0,2)
-    # word starts with 1 consonant
+    # words that begin with vowel sounds, one just adds "way" or "yay" to the end (or just "ay").
+    if word.start_with?('a','e','i','o','u')
+      result = word + 'way'
     else
-      word = word.slice(1..-1) + word.slice(0)
+      # if word begins with consonant sounds all letters before the 1st vowel are placed at the end of the word sequence. Then, "ay" is added.
+      result = word[w_index..-1]+word[0...w_index]+'ay'
     end
-    word << "ay"
-  end
+    result
+  end #end pig_word method
 
-  def piglatinize_sentence(sentence)
-    sentence.split.collect { |word| piglatinize_word(word) }.join(" ")
-  end
+  def pig_sentence
+    array = text.split(' ')
+    array.map {|word| pig_word(word)}.join(' ')
+  end #end pig_sentence method
+
+end #end PigLatinizer class
 end
 
 
