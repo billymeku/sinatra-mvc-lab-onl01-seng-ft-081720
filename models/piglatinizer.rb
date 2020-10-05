@@ -26,7 +26,7 @@ attr_reader :text
   end #end pig_sentence method
 
 end #end PigLatinizer class
-end
+
 
 
 
